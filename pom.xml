@@ -15,14 +15,15 @@
     <parent>
         <groupId>com.capitolis.core.services</groupId>
         <artifactId>capitolis-service-parent</artifactId>
-        <version>3.3.5-5</version>
+        <version>3.4.1-4</version>
     </parent>
 
 
     <dependencies>
+
         <dependency>
-            <groupId>com.capitolis.core.services</groupId>
-            <artifactId>capitolis-service-starter-aws-cloud</artifactId>
+            <groupId>com.capitolis.core.lib</groupId>
+            <artifactId>capitolis-lib-starter-swagger-client</artifactId>
         </dependency>
 
         <dependency>
@@ -30,9 +31,11 @@
             <artifactId>capitolis-service-starter</artifactId>
         </dependency>
 
+
         <dependency>
-            <groupId>com.capitolis.core.services</groupId>
-            <artifactId>capitolis-service-starter-postgres</artifactId>
+            <groupId>com.capitolis</groupId>
+            <artifactId>commons</artifactId>
+            <version>4.0.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
@@ -43,106 +46,68 @@
         </dependency>
 
         <dependency>
-            <groupId>com.capitolis.core.services</groupId>
-            <artifactId>capitolis-service-starter-kafka-producer</artifactId>
+            <groupId>com.capitolis</groupId>
+            <artifactId>eq-common-financing-terms-lib</artifactId>
+            <version>1.21.0</version>
         </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>com.capitolis.core.lib</groupId>
-            <artifactId>capitolis-lib-starter-swagger-client</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-resolver-dns-native-macos</artifactId>
-            <scope>runtime</scope>
-            <classifier>osx-aarch_64</classifier>
-            <version>4.1.77.Final</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20211205</version>
-        </dependency>
-
 
         <dependency>
             <groupId>com.capitolis</groupId>
-            <artifactId>cptls-market-data-etl-common</artifactId>
-            <version>2.0.0</version>
+            <artifactId>eq-common-financing-terms-service-client</artifactId>
+            <version>6.0.0</version>
         </dependency>
+
         <dependency>
             <groupId>com.capitolis</groupId>
-            <artifactId>cptls-market-data-fetcher-common</artifactId>
-            <version>1.1.0</version>
+            <artifactId>eq-common-payment-schedule-service-client</artifactId>
+            <version>50.0.0</version>
         </dependency>
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-            <version>2.7.7</version>
+            <groupId>com.capitolis.eq</groupId>
+            <artifactId>eq-common-notes-service-client</artifactId>
+            <version>8.2.11</version>
         </dependency>
-        <dependency>
-            <groupId>com.neovisionaries</groupId>
-            <artifactId>nv-websocket-client</artifactId>
-            <version>2.14</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>4.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.websocket</groupId>
-            <artifactId>jakarta.websocket-api</artifactId>
-            <version>2.2.0</version>
-        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-websocket</artifactId>
+            <artifactId>spring-web</artifactId>
+            <version>6.2.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>2.2.28</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.capitolis.eq</groupId>
+            <artifactId>eq-common-advance-service-client</artifactId>
+            <version>2.1.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.capitolis</groupId>
+            <artifactId>eq-cpi-envelope-service-client</artifactId>
+            <version>2.0.5</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/de.vandermeer/asciitable -->
+        <dependency>
+            <groupId>de.vandermeer</groupId>
+            <artifactId>asciitable</artifactId>
+            <version>0.3.1</version>
         </dependency>
 
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>target/jacoco-report</outputDirectory>
-                            <excludes>
-                                <exclude>generated/**</exclude>
-                                <exclude>com/capitolis/generated/**</exclude>
-                            </excludes>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
