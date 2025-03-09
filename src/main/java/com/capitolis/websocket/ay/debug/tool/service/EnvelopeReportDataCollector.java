@@ -8,7 +8,7 @@ import com.capitolis.eq_common_payment_schedule_service.model.PaymentTable;
 import com.capitolis.eq_common_payment_schedule_service.model.PaymentTableWithAccrualPeriodsDto;
 import com.capitolis.eq_cpi_envelope_service.model.CpiEnvelopeRes;
 import com.capitolis.websocket.ay.debug.tool.client.*;
-import com.capitolis.websocket.ay.debug.tool.model.CpiEnvelopeReportDao;
+import com.capitolis.websocket.ay.debug.tool.model.CpiEnvelopeReportDto;
 import com.capitolis.websocket.ay.debug.tool.model.EnvName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,7 +29,7 @@ public class EnvelopeReportDataCollector {
     private final FinancingTermsServiceClient financingTermsServiceClient;
 
 
-    public CpiEnvelopeReportDao collect(String id, boolean withAccruals, EnvName envName) {
+    public CpiEnvelopeReportDto collect(String id, boolean withAccruals, EnvName envName) {
         CpiEnvelopeRes cpiEnvelope = envelopeService.extractCpiEnvelope(id, envName);
 
         SeriesResponseDto series = seriesServiceClient.getById(cpiEnvelope.getSeriesId(), envName);
@@ -76,7 +76,7 @@ public class EnvelopeReportDataCollector {
         );
         log.info("\n" + detailedPrettyString);
 
-        return CpiEnvelopeReportDao.builder()
+        return CpiEnvelopeReportDto.builder()
                 .cpiEnvelopeRes(cpiEnvelope)
                 .series(series)
 

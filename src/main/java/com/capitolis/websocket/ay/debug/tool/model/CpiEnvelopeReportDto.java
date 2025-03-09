@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CpiEnvelopeReportDao {
+public class CpiEnvelopeReportDto {
 
     private CpiEnvelopeRes cpiEnvelopeRes;
 

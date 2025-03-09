@@ -1,6 +1,6 @@
 package com.capitolis.websocket.ay.debug.tool.controller;
 
-import com.capitolis.websocket.ay.debug.tool.model.CpiEnvelopeReportDao;
+import com.capitolis.websocket.ay.debug.tool.model.CpiEnvelopeReportDto;
 import com.capitolis.websocket.ay.debug.tool.model.EnvName;
 import com.capitolis.websocket.ay.debug.tool.service.EnvelopeReportService;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -22,7 +22,7 @@ public class EnvelopeDebugController {
 
 
     @GetMapping(path = "/data2")
-    public CpiEnvelopeReportDao extractEnvelopeData2(
+    public CpiEnvelopeReportDto extractEnvelopeData2(
              @RequestParam String id
             ,@Schema(type = "boolean", allowableValues = {"false", "true"})
              @RequestParam(value = "withAccruals") boolean withAccruals

@@ -1,6 +1,5 @@
 package com.capitolis.websocket.ay.debug.tool.client;
 
-import com.capitolis.commons.utils.HttpClientUtils;
 import com.capitolis.eq_common_payment_schedule_service.api.*;
 import com.capitolis.eq_common_payment_schedule_service.model.*;
 import com.capitolis.websocket.ay.debug.tool.model.EnvName;
@@ -37,47 +36,47 @@ public class PaymentScheduleClient {
 
 
     public List<PaymentDto> fetchPaymentsByPaymentTableId(UUID paymentTableId) {
-        return HttpClientUtils.translateClientExceptions(() -> paymentsControllerApi.findPaymentByPaymentTableId(paymentTableId));
+        return translateClientExceptions(() -> paymentsControllerApi.findPaymentByPaymentTableId(paymentTableId));
     }
 
     public PaymentTable getPaymentTable(UUID paymentTableId, EnvName envName) {
         ApiClient apiClient = setApiClientEnv(envName);
         paymentTableControllerApi.setApiClient(apiClient);
 
-        return HttpClientUtils.translateClientExceptions(() -> paymentTableControllerApi.findById(paymentTableId));
+        return translateClientExceptions(() -> paymentTableControllerApi.findById(paymentTableId));
     }
 
     public PaymentTableDto getPaymentTableDto(UUID paymentTableId) {
-        return HttpClientUtils.translateClientExceptions(() -> paymentTableV2ControllerApi.findByIdV2(paymentTableId));
+        return translateClientExceptions(() -> paymentTableV2ControllerApi.findByIdV2(paymentTableId));
     }
 
     public PaymentTableWithAccrualPeriods getPaymentTableWithAccrualPeriods(UUID paymentTableId) {
-        return HttpClientUtils.translateClientExceptions(() -> paymentTableControllerApi.findByIdWithAccrualPeriods(paymentTableId));
+        return translateClientExceptions(() -> paymentTableControllerApi.findByIdWithAccrualPeriods(paymentTableId));
     }
 
     public PaymentTableWithAccrualPeriodsDto getPaymentTableWithAccrualPeriodsDto(UUID paymentTableId, EnvName envName) {
         ApiClient apiClient = setApiClientEnv(envName);
-        paymentTableControllerApi.setApiClient(apiClient);
+        paymentTableV2ControllerApi.setApiClient(apiClient);
 
-        return HttpClientUtils.translateClientExceptions(() -> paymentTableV2ControllerApi.findByIdWithAccrualPeriodsV2(paymentTableId));
+        return translateClientExceptions(() -> paymentTableV2ControllerApi.findByIdWithAccrualPeriodsV2(paymentTableId));
     }
 
 
     public List<PaymentTableDto> findAllPaymentTablesByIds(List<UUID> paymentTableIds) {
-        return HttpClientUtils.translateClientExceptions(() -> paymentTableV3ControllerApi.findAllByIds(paymentTableIds));
+        return translateClientExceptions(() -> paymentTableV3ControllerApi.findAllByIds(paymentTableIds));
     }
 
     public FirstCouponDatePreview previewFirstCouponDates(FirstCouponDatePreviewRequest firstCouponDatePreviewRequest) {
-        return HttpClientUtils.translateClientExceptions(() -> paymentTableV2ControllerApi.previewFirstCouponDate(firstCouponDatePreviewRequest));
+        return translateClientExceptions(() -> paymentTableV2ControllerApi.previewFirstCouponDate(firstCouponDatePreviewRequest));
     }
 
 
     public List<PaymentTableNotionalValueHistory> getNotionalHistory(UUID paymentTableId) {
-        return HttpClientUtils.translateClientExceptions(() -> paymentTableControllerApi.getNotionalHistory(paymentTableId));
+        return translateClientExceptions(() -> paymentTableControllerApi.getNotionalHistory(paymentTableId));
     }
 
     public List<ChangeEventDto> getChangeEvents(UUID paymentTableId, ChangeEventCriteria changeEventCriteria) {
-        return HttpClientUtils.translateClientExceptions(() ->
+        return translateClientExceptions(() ->
                 changeEventControllerApi.getChangeEvents(paymentTableId, changeEventCriteria));
     }
 
